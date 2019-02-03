@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node *next;
+}*top=NULL;
+void push()
+{
+	struct node *newnode;
+	newnode=(struct node*)malloc(sizeof(struct node));\
+	printf("\nEnter the data : ");
+	scanf("%d",&newnode->data);
+	if(top==NULL)
+		newnode->next=NULL;
+	else
+		newnode->next=top;
+	top=newnode;
+}
+int pop()
+{
+	if(top==NULL)
+	{
+		printf("\nUnderflow!!");
+		return -1;
+	}
+	else
+	{	
+		int x=top->data;
+		struct node *temp;
+		temp=top;
+		top=top->next;
+		free(temp);
+		return x;
+	}
+}
